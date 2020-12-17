@@ -63,6 +63,15 @@ RUN docker-php-ext-install pdo_mysql && \
     docker-php-ext-install gettext && \
     docker-php-ext-install exif
 
+# Install Ioncube
+ADD http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz /tmp/
+
+RUN tar xzf /tmp/ioncube_loaders_lin_x86-64.tar.gz -C /usr/local/ \
+    && rm -rf /tmp/*
+
+# COPY 00-ioncube.ini /usr/local/etc/php/conf.d/00-ioncube.ini
+# COPY 00-ioncube.ini /usr/local/etc/php/conf.d/00-ioncube.ini
+
 
 # Install Freetype 
 RUN apt-get -y update && \
