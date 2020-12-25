@@ -33,6 +33,8 @@ zip \
 openssl && \
     rm -rf /var/lib/apt/lists/* && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Install Nano
+RUN apt-get install nano cron
 
 # Install xdebug
 RUN pecl install xdebug-2.8.0 && \

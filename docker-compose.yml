@@ -2,7 +2,7 @@ version: "3"
 
 services:
   webserver:
-    build: 
+    build:
       context: ./bin/${PHPVERSION}
     container_name: '${COMPOSE_PROJECT_NAME}-${PHPVERSION}'
     restart: 'always'
@@ -28,7 +28,8 @@ services:
     volumes: 
       - ${MYSQL_DATA_DIR-./data/mysql}:/var/lib/mysql
       - ${MYSQL_LOG_DIR-./logs/mysql}:/var/log/mysql
-      - ./config/mysql/conf.d:/etc/mysql/conf.d
+      - ./config/:/home/
+      - ./config/mysql/conf.d/docker.cnf:/etc/mysql/conf.d/docker.cnf
     command: ['mysqld', '--character-set-server=utf8', '--collation-server=utf8_general_ci']
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
